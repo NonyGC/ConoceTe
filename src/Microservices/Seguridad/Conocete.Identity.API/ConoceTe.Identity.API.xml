@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConoceTe.Identity.API</name>
+    </assembly>
+    <members>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.AuthController.ConfirmEmail(ConoceTe.Identity.API.Identity.ViewModels.ConfirmEmailViewModel)">
+            <summary>
+            Confirma la dirección de correo electrónico de un usuario
+            </summary>
+            <param name="model">ConfirmEmailViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.AuthController.Register(ConoceTe.Identity.API.Identity.ViewModels.RegisterViewModel)">
+            <summary>
+            Registrar una cuenta
+            </summary>
+            <param name="model">RegisterViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.AuthController.CreateToken(ConoceTe.Identity.API.Identity.ViewModels.LoginViewModel)">
+            <summary>
+            Iniciar sesión en cuenta
+            </summary>
+            <param name="model">LoginViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.AuthController.LoginWith2fa(ConoceTe.Identity.API.Identity.ViewModels.LoginWith2faViewModel)">
+            <summary>
+            Iniciar sesión con TFA
+            </summary>
+            <param name="model">LoginWith2faViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.AuthController.ForgotPassword(ConoceTe.Identity.API.Identity.ViewModels.ForgotPasswordViewModel)">
+            <summary>
+            El correo electrónico olvidado envía un correo electrónico con un enlace que contiene el token de restablecimiento
+            </summary>
+            <param name="model">ForgotPasswordViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.AuthController.ResetPassword(ConoceTe.Identity.API.Identity.ViewModels.ResetPasswordViewModel)">
+            <summary>
+            Restablecer la contraseña de la cuenta con el token de restablecimiento
+            </summary>
+            <param name="model">ResetPasswordViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.AuthController.resendVerificationEmail(ConoceTe.Identity.API.Identity.ViewModels.UserViewModel)">
+            <summary>
+            Reenviar correo electrónico de verificación de correo electrónico con enlace token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.UserInfo">
+            <summary>
+            Obtener información de usuario
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.TwoFactorAuthentication">
+            <summary>
+            Obtenga estadísticas de TFA
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.EnableAuthenticator">
+            <summary>
+            https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-enable-qrcodes
+            http://jakeydocs.readthedocs.io/en/latest/security/authentication/2fa.html#log-in-with-two-factor-authentication
+            </summary>
+            <returns>QR Code</returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.ChangePassword(ConoceTe.Identity.API.Identity.ViewModels.ChangePasswordViewModel)">
+            <summary>
+            Cambiar contraseña para usuario autenticado
+            </summary>
+            <param name="model">ChangePasswordViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.SendVerificationEmail">
+            <summary>
+            Enviar correo electrónico de verificación
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.SetPassword(ConoceTe.Identity.API.Identity.ViewModels.SetPasswordViewModel)">
+            <summary>
+            Establezca una contraseña si el usuario aún no tiene una
+            </summary>
+            <param name="model">SetPasswordViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.Disable2fa">
+            <summary>
+            Desabilitar TFA
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.EnableAuthenticator(ConoceTe.Identity.API.Identity.ViewModels.EnableAuthenticatorViewModel)">
+            <summary>
+            Habilitar TFA (requiere código QR)
+            </summary>
+            <param name="model">EnableAuthenticatorViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.ResetAuthenticator">
+            <summary>
+            Restablecer TFA (esto restablecerá y deshabilitará TFA)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.ManageController.GenerateRecoveryCodes">
+            <summary>
+            Genere nuevos códigos de recuperación (esto invalidará los códigos anteriores)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.RoleController.Get">
+            <summary>
+            Obtén todos los roles
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.RoleController.Post(ConoceTe.Identity.API.Identity.ViewModels.RoleViewModel)">
+            <summary>
+            Insertar un rol
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.RoleController.Put(System.String,ConoceTe.Identity.API.Identity.ViewModels.RoleViewModel)">
+            <summary>
+            Actualizar un rol
+            </summary>
+            <param name="Id">Role Id</param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.RoleController.Delete(System.String)">
+            <summary>
+            Eliminarun rol
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserController.Get">
+            <summary>
+            Obtener todos los usuarios
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserController.Get(System.Nullable{System.Int32})">
+            <summary>
+            Obtener un usuario
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserController.Post(ConoceTe.Identity.API.Identity.ViewModels.UserViewModel)">
+            <summary>
+            Insertar un usuario con un rol existente
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserController.Put(System.String,ConoceTe.Identity.API.Identity.ViewModels.EditUserViewModel)">
+            <summary>
+            Actualizar usuario
+            </summary>
+            <param name="Id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserController.Delete(System.String)">
+            <summary>
+            Eliminar un usuario (también eliminará el enlace a los roles)
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserRolesController.Get(System.String)">
+            <summary>
+            Obtener roles de usuario
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserRolesController.Post(ConoceTe.Identity.API.Identity.ViewModels.UserViewModel)">
+            <summary>
+            Agregar un usuario al rol existente
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ConoceTe.Identity.API.Identity.Controllers.UserRolesController.Delete(System.String,System.String)">
+            <summary>
+            Eliminar un usuario de un rol existente
+            </summary>
+            <param name="Id"></param>
+            <param name="RoleId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
