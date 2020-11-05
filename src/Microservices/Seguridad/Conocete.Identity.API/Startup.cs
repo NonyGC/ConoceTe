@@ -91,7 +91,6 @@ namespace ConoceTe.Identity.API
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Identity Web API V1");
-                //c.RoutePrefix = "";
             });
 
             app.UseEndpoints(endpoints =>

@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using ConoceTe.Citas.Infrastructure.Idempotency;
+using ConoceTe.EvenBus.Extensions;
 
 namespace ConoceTe.Citas.API.Application.Commands
 {
@@ -61,28 +63,28 @@ namespace ConoceTe.Citas.API.Application.Commands
                     var idProperty = string.Empty;
                     var commandId = string.Empty;
 
-                    switch (command)
-                    {
-                        case CreateOrderCommand createOrderCommand:
-                            idProperty = nameof(createOrderCommand.UserId);
-                            commandId = createOrderCommand.UserId;
-                            break;
+                    //switch (command)
+                    //{
+                    //    case CreateOrderCommand createOrderCommand:
+                    //        idProperty = nameof(createOrderCommand.UserId);
+                    //        commandId = createOrderCommand.UserId;
+                    //        break;
 
-                        case CancelOrderCommand cancelOrderCommand:
-                            idProperty = nameof(cancelOrderCommand.OrderNumber);
-                            commandId = $"{cancelOrderCommand.OrderNumber}";
-                            break;
+                    //    case CancelOrderCommand cancelOrderCommand:
+                    //        idProperty = nameof(cancelOrderCommand.OrderNumber);
+                    //        commandId = $"{cancelOrderCommand.OrderNumber}";
+                    //        break;
 
-                        case ShipOrderCommand shipOrderCommand:
-                            idProperty = nameof(shipOrderCommand.OrderNumber);
-                            commandId = $"{shipOrderCommand.OrderNumber}";
-                            break;
+                    //    case ShipOrderCommand shipOrderCommand:
+                    //        idProperty = nameof(shipOrderCommand.OrderNumber);
+                    //        commandId = $"{shipOrderCommand.OrderNumber}";
+                    //        break;
 
-                        default:
-                            idProperty = "Id?";
-                            commandId = "n/a";
-                            break;
-                    }
+                    //    default:
+                    //        idProperty = "Id?";
+                    //        commandId = "n/a";
+                    //        break;
+                    //}
 
                     _logger.LogInformation(
                         "----- Sending command: {CommandName} - {IdProperty}: {CommandId} ({@Command})",

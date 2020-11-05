@@ -6,51 +6,50 @@ using System.Threading.Tasks;
 using ConoceTe.Citas.API.Application.Commands;
 using ConoceTe.Citas.Domain.AggregatesModel.CitasAggregate;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace ConoceTe.Citas.API.Controllers
 {
-    [Route("api/v1/[controller]")]
-    [ApiController]
-    public class PacienteController : ControllerBase
+    public class PsicologoController : Controller
     {
-        private readonly IPacienteRepository _pacienteRepository;
+        private readonly IPsicologoRepository _psicologoRepository;
         private readonly IMediator _mediator;
-        private readonly ILogger<PacienteController> _logger;
+        private readonly ILogger<PsicologoController> _logger;
 
-        public PacienteController(IPacienteRepository pacienteRepository, IMediator mediator, ILogger<PacienteController> logger)
+        public PsicologoController(IPsicologoRepository psicologoRepository, IMediator mediator, ILogger<PsicologoController> logger)
         {
-            _pacienteRepository = pacienteRepository ?? throw new ArgumentNullException(nameof(pacienteRepository));
+            _psicologoRepository = psicologoRepository ?? throw new ArgumentNullException(nameof(psicologoRepository));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Paciente>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<Psicologo>), 200)]
         [Route("get")]
-        public IEnumerable<Paciente> Get()
+        public IActionResult Get()
         {
-            return _pacienteRepository.GetAll().ToList();
+            var list = _psicologoRepository.GetAll().ToList();
+            return Ok(list);
         }
 
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(Paciente), 400)]
+        [ProducesResponseType(typeof(Psicologo), 400)]
         [Route("get/{id}")]
-        public Paciente Get(int id)
+        public IActionResult Get(int id)
         {
-            return _pacienteRepository.GetById(id);
+            var psicologo= _psicologoRepository.GetById(id);
+            return Ok(psicologo);
         }
 
-        // POST: api/Paciente
+        // POST: api/Psicologo
         [Route("Crear")]
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> CrearPacienteAsync([FromBody] CrearPacienteCommand command)
+        public async Task<IActionResult> CrearPsicologoAsync([FromBody] CrearPsicologoCommand command)
         {
 
             bool commandResult = await _mediator.Send(command);
@@ -67,7 +66,7 @@ namespace ConoceTe.Citas.API.Controllers
         [Route("actualizar")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> ActualizarPacienteAsync([FromBody] ActualizarPacienteCommand command)
+        public async Task<IActionResult> ActualizarPsicologoAsync([FromBody] ActualizarPsicologoCommand command)
         {
 
             bool commandResult = await _mediator.Send(command);
@@ -86,9 +85,9 @@ namespace ConoceTe.Citas.API.Controllers
         [Route("eliminar/{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> EliminarPacienteAsync(int id)
+        public async Task<IActionResult> EliminarPsicologoAsync(int id)
         {
-            var command = new EliminarPacienteCommand(id);
+            var command = new EliminarPsicologoCommand(id);
             bool commandResult = await _mediator.Send(command);
 
             if (!commandResult)

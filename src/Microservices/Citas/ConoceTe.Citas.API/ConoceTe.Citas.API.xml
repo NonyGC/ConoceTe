@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConoceTe.Citas.API</name>
+    </assembly>
+    <members>
+        <member name="T:ConoceTe.Citas.API.Application.Commands.IdentifiedCommandHandler`2">
+            <summary>
+            Provides a base implementation for handling duplicate request and ensuring idempotent updates, in the cases where
+            a requestid sent by client is used to detect duplicate requests.
+            </summary>
+            <typeparam name="T">Type of the command handler that performs the operation if request is not duplicated</typeparam>
+            <typeparam name="R">Return value of the inner command handler</typeparam>
+        </member>
+        <member name="M:ConoceTe.Citas.API.Application.Commands.IdentifiedCommandHandler`2.CreateResultForDuplicateRequest">
+            <summary>
+            Creates the result value to return if a previous request was found
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ConoceTe.Citas.API.Application.Commands.IdentifiedCommandHandler`2.Handle(ConoceTe.Citas.API.Application.Commands.IdentifiedCommand{`0,`1},System.Threading.CancellationToken)" -->
+    </members>
+</doc>

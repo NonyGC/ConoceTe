@@ -37,8 +37,14 @@ namespace ConoceTe.Citas.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new PacienteEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new PsicologoEntityTypeConfiguration());
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Paciente>().ToTable("Paciente", DEFAULT_SCHEMA).HasKey(o => o.Id);
+
+            modelBuilder.Entity<Psicologo>().ToTable("Psicologo", DEFAULT_SCHEMA).HasKey(o => o.Id);
+
+            //modelBuilder.ApplyConfiguration(new PacienteEntityTypeConfiguration());
+            //modelBuilder.ApplyConfiguration(new PsicologoEntityTypeConfiguration());
         }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken))
