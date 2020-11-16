@@ -12,6 +12,5 @@ namespace ConoceTe.Citas.Infrastructure.Repositories
         public PacienteRepository(CitasContext context) : base(context)
         {
         }
-        public IUnitOfWork UnitOfWork => Context;
     }
 }

@@ -14,12 +14,13 @@ namespace ConoceTe.Citas.Infrastructure
 {
     public class CitasContext : DbContext, IUnitOfWork
     {
-        public DbSet<Paciente> Orders { get; set; }
-
         private readonly IMediator _mediator;
         private IDbContextTransaction _currentTransaction;
 
-        public CitasContext(DbContextOptions<CitasContext> options) : base(options) { }
+        public CitasContext(DbContextOptions<CitasContext> options) 
+            : base(options) 
+        { 
+        }
 
         public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
 
@@ -43,8 +44,6 @@ namespace ConoceTe.Citas.Infrastructure
 
             modelBuilder.Entity<Psicologo>().ToTable("Psicologo", DEFAULT_SCHEMA).HasKey(o => o.Id);
 
-            //modelBuilder.ApplyConfiguration(new PacienteEntityTypeConfiguration());
-            //modelBuilder.ApplyConfiguration(new PsicologoEntityTypeConfiguration());
         }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -115,34 +114,34 @@ namespace ConoceTe.Citas.Infrastructure
         }
     }
 
-    public class OrderingContextDesignFactory : IDesignTimeDbContextFactory<CitasContext>
-    {
-        public CitasContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<CitasContext>()
-                .UseNpgsql("Server=localhost;Database=ConoceTeSeguridad;Username=postgres;Password=admin",
-                x => x.MigrationsHistoryTable("__MigrationsHistory", CitasContext.DEFAULT_SCHEMA));
+    //public class OrderingContextDesignFactory : IDesignTimeDbContextFactory<CitasContext>
+    //{
+    //    public CitasContext CreateDbContext(string[] args)
+    //    {
+    //        var optionsBuilder = new DbContextOptionsBuilder<CitasContext>()
+    //            .UseNpgsql("Server=localhost;Database=ConoceTeSeguridad;Username=postgres;Password=admin",
+    //            x => x.MigrationsHistoryTable("__MigrationsHistory", CitasContext.DEFAULT_SCHEMA));
 
-            return new CitasContext(optionsBuilder.Options, new NoMediator());
-        }
+    //        return new CitasContext(optionsBuilder.Options, new NoMediator());
+    //    }
 
-        class NoMediator : IMediator
-        {
-            public Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default(CancellationToken)) where TNotification : INotification
-            {
-                return Task.CompletedTask;
-            }
+    //    class NoMediator : IMediator
+    //    {
+    //        public Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default(CancellationToken)) where TNotification : INotification
+    //        {
+    //            return Task.CompletedTask;
+    //        }
 
-            public Task Publish(object notification, CancellationToken cancellationToken = default)
-            {
-                return Task.CompletedTask;
-            }
+    //        public Task Publish(object notification, CancellationToken cancellationToken = default)
+    //        {
+    //            return Task.CompletedTask;
+    //        }
 
-            public Task<TResponse> Send<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                return Task.FromResult<TResponse>(default(TResponse));
-            }
+    //        public Task<TResponse> Send<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default(CancellationToken))
+    //        {
+    //            return Task.FromResult<TResponse>(default(TResponse));
+    //        }
 
-        }
-    }
+    //    }
+    //}
 }

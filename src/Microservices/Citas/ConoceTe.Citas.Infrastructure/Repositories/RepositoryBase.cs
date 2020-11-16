@@ -7,10 +7,12 @@ using System.Text;
 
 namespace ConoceTe.Citas.Infrastructure.Repositories
 {
-    public class RepositoryBase<T> where T : class
+    public class RepositoryBase<T>  where T : class
     {
         protected readonly CitasContext Context;
         protected readonly DbSet<T> DbSet;
+
+        public IUnitOfWork UnitOfWork => Context;
 
         public RepositoryBase(CitasContext context)
         {

@@ -52,7 +52,6 @@ namespace ConoceTe.Citas.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> CrearPacienteAsync([FromBody] CrearPacienteCommand command)
         {
-
             bool commandResult = await _mediator.Send(command);
 
             if (!commandResult)

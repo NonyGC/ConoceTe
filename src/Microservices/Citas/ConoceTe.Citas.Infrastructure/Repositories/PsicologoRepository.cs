@@ -13,6 +13,5 @@ namespace ConoceTe.Citas.Infrastructure.Repositories
 
         }
 
-        public IUnitOfWork UnitOfWork => Context;
     }
 }
